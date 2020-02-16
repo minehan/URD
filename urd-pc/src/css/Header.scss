@@ -1,0 +1,123 @@
+@import "./reset.scss";
+@import "./common.scss";
+
+/* コンポネート名でラップすること */
+.Header {
+  height: 55px;
+  background-color: $charcoal;
+  color: $paper;
+
+  h1 {
+    user-select: none;
+    font-family: 'Great Vibes', cursive;
+    font-size: $largeFont;
+    padding: 17px 0 0 20px;
+
+    a {
+      text-decoration: none;
+      color: $paper;
+    }
+  }
+
+  .contentsWrapper {
+    display: flex;
+  }
+
+  .leftContents {
+    width: 50%;
+    display: flex;
+
+    .arrow {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    .arrow .inner,
+    .arrow .inner::before,
+    .arrow .inner::after {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: $paper;
+      transition-duration: .15s;
+      transition-property: width, transform;
+      transition-timing-function: ease-in-out;
+      content: '';
+    }
+
+    .arrow .inner {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+
+    .arrow .inner::before {
+      top: -8px;
+    }
+
+    .arrow .inner::after {
+      top: 8px;
+    }
+
+    .arrow:hover .inner::before,
+    .arrow:hover .inner::after {
+      width: 16px;
+      will-change: width, transform;
+    }
+
+    .arrow.left:hover .inner::before {
+      transform: translateY(13px) translateX(-4px) rotate(45deg);
+    }
+
+    .arrow.left:hover .inner::after {
+      transform: translateY(-13px) translateX(-4px) rotate(-45deg);
+    }
+
+    .arrow.right:hover .inner::before {
+      transform: translateY(13px) translateX(7px) rotate(-45deg);
+    }
+
+    .arrow.right:hover .inner::after {
+      transform: translateY(-13px) translateX(7px) rotate(45deg);
+    }
+
+  }
+
+  .rightContents {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+
+    .rightContentsItems {
+      margin-right: 20px;
+    }
+
+    .rightContentsItems>svg {
+      width: 25px;
+      height: 25px;
+      position: relative;
+      top: 15px;
+      cursor: pointer;
+
+      &:hover>path {
+        color: $palegold;
+      }
+    }
+
+    .rightContentsItems>svg>path {
+      color: $paper;
+      transition: all 0.5s ease;
+    }
+
+    .profile {
+      display: block;
+      margin: 12px 0 0 auto;
+      cursor: pointer;
+    }
+  }
+}
